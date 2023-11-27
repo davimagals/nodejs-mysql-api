@@ -1,16 +1,16 @@
-const express = require('express')
-const app = express()
+const express = require('express')  // Importa o EXPRESSJS
+const app = express()               // Cria um objeto APP poderoso para responder requisições 
 
-require('dotenv').config()
+require('dotenv').config()          // Configura as variáveis de ambiente.
 
-const driversRouter = require('./routes/drivers.router')
+const driversRouter = require('./routes/drivers.router')    // Importa o módulo 'motorista'
 
-app.use(express.urlencoded({extended: false}))
-app.use(express.json())
+app.use(express.urlencoded({extended: false}))  // Permite receber dados.
+app.use(express.json())                         // Permite a troca de dados em JSON.
 
-app.use('/api/v1/drivers', driversRouter)
+app.use('/api/v1/drivers', driversRouter)   // Configura a rota BASE do módulo 'motorista'.
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000       // Inicia o servidor.
 app.listen(PORT, () => {
-    console.log('Server running...')
+    console.log(`Server running on port ${PORT}...`)
 })
